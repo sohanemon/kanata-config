@@ -1,0 +1,70 @@
+(defalias
+  ;; vim layer-while-held
+  vim (layer-while-held vim_layer)
+  space (tap-hold-release $tt $lht spc @vim)
+
+  ;; navigation layer-while-held
+  tab (tap-hold-release $tt $ht tab (multi lctl lmet lalt (layer-while-held tab_layer)))
+  ;; so, tab+x is ctrl+super+alt+x
+
+  ;; functions 
+  grv (tap-hold-release $tt $ht grv (multi lctl lmet (layer-while-held grv_layer)))
+  ;; so, grv+x is ctrl+super+x
+
+  ;; ctrl is so far to use
+  caps (tap-hold-release $tt $ht esc (multi lctl lalt (layer-while-held caps_layer)))
+  ;; so caps+x is ctrl+alt+x
+
+  ;; super + shift is now only return
+  ret (tap-hold-release $tt $ht ret (multi lmet lsft (layer-while-held ret_layer)))
+   ;; so, ret+x is super+shift+x
+
+
+  ;; single click action meta
+  meta (tap-hold-release 0 $ht M-A-tab _)
+
+  sup (layer-while-held super_layer)
+
+  app (tap-hold-release $tt $ht _ (multi lmet lsft lalt))
+  ;; so, app+x press is x and app(hold)+x is shift+super+alt+x
+
+  lalt (multi
+         lalt
+        (layer-while-held alt_layer)
+         )
+  ralt (multi
+         ralt
+        (layer-while-held alt_layer)
+         )
+  rctl (multi
+         rctl
+        (layer-while-held command_layer)
+         )
+  lctl (multi
+         lctl
+        (layer-while-held command_layer)
+         )
+
+  ;; left hand mods should only resolve to hold if followed by a RIGHT-hand key
+  a (tap-hold-release-keys $tt $ht _ (multi lmet @sup) $left-hand-keys)
+  s (tap-hold-release-keys $tt $ht _ @lalt $left-hand-keys)
+  d (tap-hold-release-keys $tt $ht _ lsft $left-hand-keys)
+  f (tap-hold-release-keys $tt $ht _ @lctl $left-hand-keys)
+  g (tap-hold-release-keys $tt $ht _ @app $left-hand-keys)
+
+  h (tap-hold-release-keys $tt $ht _ @app $right-hand-keys)
+  j (tap-hold-release-keys $tt $ht _ @rctl $right-hand-keys)
+  k (tap-hold-release-keys $tt $ht _ rsft $right-hand-keys)
+  l (tap-hold-release-keys $tt $ht _ @ralt $right-hand-keys)
+
+  scln (tap-hold-release $tt $ht (fork _ (multi _ sldr) (lsft rsft)) (multi rmet @sup))
+
+
+  i (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer_fast) $right-hand-keys)
+  o (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer) $right-hand-keys)
+
+  ;; montitors
+  left_monitor (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-left 100 100))
+  right_monitor (macro (movemouse-right 100 30000) 100 (movemouse-right 100 100) 100 (movemouse-right 100 100))
+  )
+

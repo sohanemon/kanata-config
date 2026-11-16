@@ -1,0 +1,26 @@
+;; _     f1   f2   f3   f4   f5   f6   f7   f8     f9     f10  f11    f12     _   _
+
+(defsrc
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc  grv
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del
+  caps a    s    d    f    g    h    j    k    l    scln '    ret pgup
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up pgdn
+  lctl lmet lalt           spc            ralt rmet rctl
+  )
+
+(defvar
+  left-hand-keys (
+    esc  1    2    3    4    5   
+    tab  q    w    e    r    t
+    caps a    s    d    f    g
+    lsft z    x    c    v    b
+    lctl lmet lalt
+    )
+  right-hand-keys (
+    6    7    8    9    0    -    =    bspc  grv
+    y    u    i    o    p    [    ]    \    del
+    h    j    k    l    scln '    ret  pgup
+    n    m    ,    .    /    rsft up   pgdn
+          ralt rmet rctl
+    )
+  )

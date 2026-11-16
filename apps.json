@@ -1,0 +1,12 @@
+[
+  {
+    "class": false,
+    "title": "VLC media player",
+    "layer": null
+  },
+  {
+    "class": "*",
+    "title": "*",
+    "layer": "default"
+  }
+]

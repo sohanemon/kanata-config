@@ -1,0 +1,25 @@
+(defcfg
+  danger-enable-cmd     yes
+  process-unmapped-keys yes
+  allow-hardware-repeat yes
+  log-layer-changes     no
+  concurrent-tap-hold   yes
+  sequence-timeout      5000
+  sequence-input-mode   visible-backspaced
+  rapid-event-delay 20
+  )
+
+(defvar
+  ;; tap time
+  tt 80
+  ;; hold time
+  ht 200
+  ;; long hold time
+  lht 400
+  ;; composer key delay (streaming effect)
+  kd 10
+  ;; composer cursor delay (streaming effect)
+  kcd 5
+  ;; composer settle delay — pause after bspc before typing starts (terminal PTY needs this)
+  ks 60
+  )

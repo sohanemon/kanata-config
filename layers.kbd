@@ -1,0 +1,97 @@
+(deflayermap (default)
+  grv   @grv
+  tab   @tab
+  i     @i
+  o     @o
+  caps  @caps
+  a     @a
+  s     @s
+  d     @d
+  f     @f
+  g     @g
+  h     @h
+  j     @j
+  k     @k
+  l     @l
+  scln  @scln
+  ret   @ret
+  lmet  @meta
+  spc   @space
+)
+
+(deflayermap (vim_layer)
+  4  end
+  0  home
+  w  C-right
+  e  C-u
+  r  C-S-z
+  y  C-c
+  u  C-z
+  p  C-v
+  s  S-left
+  d  C-d
+  f  S-right
+  h  (fork left (unmod lsft left) (lalt ralt))
+  j  down
+  k  up
+  l  (fork right (unmod lsft right) (lalt ralt))
+  x  C-x
+  v  C-S-v
+  b  C-left
+  /  C-f
+)
+
+(deflayermap (alt_layer)
+  a     (unmod lctl t)
+  b     (unmod lctl b)
+  c     (unmod lalt home)
+  s     (unmod lalt d)
+  h     (unmod lsft f6)
+  j     (unmod lctl pgdn)
+  k     (unmod lctl pgup)
+  l     (unmod f6)
+  scln  (unmod lctl lsft a)
+  x     (unmod lctl w)
+  [     left
+  ]     right
+  \     (unmod f3)
+)
+
+(deflayermap (command_layer)
+  4  (macro (unmod lsft end) (unmod del))
+  0  (unmod lctl lsft bspc)
+  w  (unmod lctl del)
+  h  (unmod bspc)
+  j  (unmod lsft ret)
+  l  (unmod del)
+  b  (unmod lctl bspc)
+)
+
+(deflayermap (super_layer)
+  [  @msleft
+  ]  @msright
+  a  (unmod ret)
+  scln  (unmod ret)
+)
+
+(deflayermap (insert)
+  caps  (layer-switch default)
+)
+
+(deflayermap (caps_layer))
+
+(deflayermap (tab_layer)
+  [ @left_monitor
+  ] @right_monitor
+)
+
+(deflayermap (ret_layer))
+
+(deflayermap (grv_layer)
+  j  C-M-j
+  k  C-M-k
+)
+
+(deflayermap (empty_layer)
+  caps  XX
+)

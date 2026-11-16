@@ -1,0 +1,61 @@
+(defalias
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
+
+  ms↑f (movemouse-up 1 2)
+  ms←f (movemouse-left 1 2)
+  ms↓f (movemouse-down 1 2)
+  ms→f (movemouse-right 1 2)
+
+  ms↑ (movemouse-up 3 1)
+  ms← (movemouse-left 3 1)
+  ms↓ (movemouse-down 3 1)
+  ms→ (movemouse-right 3 1)
+
+  msleft (macro
+            (movemouse-left 100 30000)
+            (10)
+            (movemouse-left 100 100)
+          )
+  msright (macro
+            (movemouse-right 100 30000)
+            10
+            (movemouse-right 100 100)
+            )
+
+  )
+
+
+(deflayermap (mouse_layer_fast)
+  w    mlft
+  e    @ms↑f
+  r    mrgt
+  t    mmid
+  i    @i
+  o    @o
+  a    mrgt
+  s    @ms←f
+  d    @ms↓f
+  f    @ms→f
+  j    mlft
+  scln mrgt
+  spc  mlft
+)
+
+(deflayermap (mouse_layer)
+  w    mlft
+  e    @ms↑
+  r    mrgt
+  t    mmid
+  i    @i
+  o    @o
+  a    mrgt
+  s    @ms←
+  d    @ms↓
+  f    @ms→
+  j    mlft
+  scln mrgt
+  spc  mlft
+)

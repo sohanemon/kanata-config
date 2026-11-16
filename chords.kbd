@@ -1,0 +1,10 @@
+;; Combos/Input Chords v2
+(defchordsv2
+  (a scln) ret $tt all-released  ()
+  ;; (d k) (macro M-spc 50 spc) $tt all-released  ()
+  ;; montitors
+  ;; (f j) (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-right 50 50) 100 M-C-A-0) $tt all-released  ()
+  ;; (d k) (macro (movemouse-right 100 30000) 100 (movemouse-right 100 100) 100 M-C-A-1) $tt all-released  ()
+  ;; (s l) (macro (movemouse-right 100 30000) 100 (movemouse-right 100 100) 100 (movemouse-left 50 50) 100 M-C-A-2) $tt all-released  ()
+
+)
