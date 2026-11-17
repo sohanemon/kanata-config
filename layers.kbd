@@ -19,6 +19,19 @@
   spc   @space
 )
 
+(deflayermap (homerow_fallback)
+  _     use-defsrc
+  caps  esc
+  a     lmet
+  s     lalt
+  d     lsft
+  f     lctl
+  j     rctl
+  k     rsft
+  l     ralt
+  scln  rmet
+)
+
 (deflayermap (vim_layer)
   4  end
   0  home

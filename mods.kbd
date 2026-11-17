@@ -67,4 +67,3 @@
   left_monitor (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-left 100 100))
   right_monitor (macro (movemouse-right 100 30000) 100 (movemouse-right 100 100) 100 (movemouse-right 100 100))
   )
-
