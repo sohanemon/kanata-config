@@ -60,8 +60,7 @@
   scln (tap-hold-release $tt $ht (fork _ (multi _ sldr) (lsft rsft)) (multi rmet @sup))
 
 
-  i (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer_fast) $right-hand-keys)
-  o (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer) $right-hand-keys)
+  ' (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer) $mouse-tap-keys)
 
   ;; montitors
   left_monitor (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-left 100 100))

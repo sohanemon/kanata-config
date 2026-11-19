@@ -1,18 +1,26 @@
+;; NOTE: j/k are speed modifiers on mouse_layer — drop them from the `'` tap-hold tap keys
+;;       so pressing them does not cancel mouse_layer into a literal apostrophe
+(defvar
+  mouse-tap-keys (
+    6    7    8    9    0    -    =    bspc  grv
+    y    u    i    o    p    [    ]    \    del
+    h    l    scln '    ret  pgup
+    n    m    ,    .    /    rsft up   pgdn
+          ralt rmet rctl
+    )
+  )
+
 (defalias
   mwu (mwheel-up 50 120)
   mwd (mwheel-down 50 120)
   mwl (mwheel-left 50 120)
   mwr (mwheel-right 50 120)
 
-  ms↑f (movemouse-up 1 2)
-  ms←f (movemouse-left 1 2)
-  ms↓f (movemouse-down 1 2)
-  ms→f (movemouse-right 1 2)
-
-  ms↑ (movemouse-up 3 1)
-  ms← (movemouse-left 3 1)
-  ms↓ (movemouse-down 3 1)
-  ms→ (movemouse-right 3 1)
+  ;; NOTE: movemouse args = interval(ms) distance(px). base 2px/3ms; j=50% -> 1px, k=300% -> 6px
+  ms↑ (movemouse-up 3 2)
+  ms← (movemouse-left 3 2)
+  ms↓ (movemouse-down 3 2)
+  ms→ (movemouse-right 3 2)
 
   msleft (macro
             (movemouse-left 100 30000)
@@ -27,35 +35,19 @@
 
   )
 
-
-(deflayermap (mouse_layer_fast)
-  w    mlft
-  e    @ms↑f
-  r    mrgt
-  t    mmid
-  i    @i
-  o    @o
-  a    mrgt
-  s    @ms←f
-  d    @ms↓f
-  f    @ms→f
-  j    mlft
-  scln mrgt
-  spc  mlft
-)
-
 (deflayermap (mouse_layer)
-  w    mlft
-  e    @ms↑
-  r    mrgt
-  t    mmid
-  i    @i
-  o    @o
-  a    mrgt
-  s    @ms←
-  d    @ms↓
-  f    @ms→
-  j    mlft
-  scln mrgt
+  j   (movemouse-speed 50)
+  k   (movemouse-speed 300)
+
+  e   @ms↑
+  s   @ms←
+  d   @ms↓
+  f   @ms→
+
+  _   XX
+
   spc  mlft
+  caps mlft
+  lsft mrgt
+  tab  mmid
 )

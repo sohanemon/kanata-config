@@ -1,8 +1,6 @@
 (deflayermap (default)
   grv   @grv
   tab   @tab
-  i     @i
-  o     @o
   caps  @caps
   a     @a
   s     @s
@@ -14,6 +12,7 @@
   k     @k
   l     @l
   scln  @scln
+  '     @'
   ret   @ret
   lmet  @meta
   spc   @space
