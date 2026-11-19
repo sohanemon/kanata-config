@@ -1,20 +1,9 @@
-;; NOTE: j/k are speed modifiers on mouse_layer — drop them from the `'` tap-hold tap keys
-;;       so pressing them does not cancel mouse_layer into a literal apostrophe
-(defvar
-  mouse-tap-keys (
-    6    7    8    9    0    -    =    bspc  grv
-    y    u    i    o    p    [    ]    \    del
-    h    l    scln '    ret  pgup
-    n    m    ,    .    /    rsft up   pgdn
-          ralt rmet rctl
-    )
-  )
-
 (defalias
-  mwu (mwheel-up 50 120)
-  mwd (mwheel-down 50 120)
-  mwl (mwheel-left 50 120)
-  mwr (mwheel-right 50 120)
+  ;; NOTE: mwheel args = interval(ms) distance(120 = one notch). j=50%, k=300% via mousewheel-speed
+  mwu (mwheel-up 50 60)
+  mwd (mwheel-down 50 60)
+  mwl (mwheel-left 50 60)
+  mwr (mwheel-right 50 60)
 
   ;; NOTE: movemouse args = interval(ms) distance(px). base 2px/3ms; j=50% -> 1px, k=300% -> 6px
   ms↑ (movemouse-up 3 2)
@@ -36,13 +25,21 @@
   )
 
 (deflayermap (mouse_layer)
-  j   (movemouse-speed 50)
-  k   (movemouse-speed 300)
+  ;; NOTE: j/k scale movement + scroll: j=50%, k=300%
+  j   (multi (movemouse-speed 50) (mousewheel-speed 20))
+  k   (multi (movemouse-speed 200) (mousewheel-speed 150))
+  l   (multi (movemouse-speed 300) (mousewheel-speed 300))
 
   e   @ms↑
   s   @ms←
   d   @ms↓
   f   @ms→
+
+  ;; scroll
+  q   @mwu
+  a   @mwd
+  w   @mwl
+  r   @mwr
 
   _   XX
 
