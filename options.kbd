@@ -23,3 +23,8 @@
   ;; composer settle delay — pause after bspc before typing starts (terminal PTY needs this)
   ks 60
   )
+
+(deflocalkeys-linux
+  hold 211 ;; code:211 + 8 for hyprland
+  micmute 248 ;; KEY_MICMUTE
+  )

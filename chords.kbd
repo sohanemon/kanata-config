@@ -1,5 +1,10 @@
 ;; Combos/Input Chords v2
 (defchordsv2
+  ;; explicit Caps Lock toggle: both Shift keys pressed together within 150 ms.
+  ;; A slow hold of one Shift then the other (e.g. autoscroll + Shift) misses the
+  ;; chord window, so it no longer toggles Caps Lock accidentally.
+  (lsft rsft) caps 150 all-released  ()
+
   (a scln) ret $tt all-released  ()
   ;; (d k) (macro M-spc 50 spc) $tt all-released  ()
   ;; montitors

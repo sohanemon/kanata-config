@@ -45,21 +45,36 @@
         (layer-while-held command_layer)
          )
 
-  ;; left hand mods should only resolve to hold if followed by a RIGHT-hand key
-  a (tap-hold-release-keys $tt $ht _ (multi lmet @sup) $left-hand-keys)
-  s (tap-hold-release-keys $tt $ht _ @lalt $left-hand-keys)
-  d (tap-hold-release-keys $tt $ht _ lsft $left-hand-keys)
-  f (tap-hold-release-keys $tt $ht _ @lctl $left-hand-keys)
-  g (tap-hold-release-keys $tt $ht _ @app $left-hand-keys)
+  )
 
-  h (tap-hold-release-keys $tt $ht _ @app $right-hand-keys)
-  j (tap-hold-release-keys $tt $ht _ @rctl $right-hand-keys)
-  k (tap-hold-release-keys $tt $ht _ rsft $right-hand-keys)
-  l (tap-hold-release-keys $tt $ht _ @ralt $right-hand-keys)
+(defaliasenvcond (KANATA_TOUCHPAD_MOD 1)
+  ;; NOTE: Enable mouse-button holds only when touchpad mode is requested.
+  draw-mod (tap-hold-release $tt $ht use-defsrc (multi use-defsrc mlft))
+  scroll-mod (tap-hold-release $tt $ht use-defsrc (multi use-defsrc mmid))
+)
 
-  scln (tap-hold-release $tt $ht (fork _ (multi _ sldr) (lsft rsft)) (multi rmet @sup))
+(defaliasenvcond (KANATA_TOUCHPAD_MOD 0)
+  draw-mod use-defsrc
+  scroll-mod use-defsrc
+)
 
-  ' (tap-hold-release-keys $tt $ht _ (layer-while-held mouse_layer) $right-hand-keys)
+(defalias
+
+  ;; NOTE: Resolve opposite-hand holds after the interrupting key is released to avoid fast-roll misfires.
+  a (tap-hold-opposite-hand-release $ht _ (multi lmet @sup) (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  s (tap-hold-opposite-hand-release $ht _ @lalt (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  d (tap-hold-opposite-hand-release $ht _ lsft (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  f (tap-hold-opposite-hand-release $ht _ @lctl (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  g (tap-hold-opposite-hand-release $ht _ @app (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+
+  h (tap-hold-opposite-hand-release $ht _ @app (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  j (tap-hold-opposite-hand-release $ht _ @rctl (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  k (tap-hold-opposite-hand-release $ht _ rsft (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+  l (tap-hold-opposite-hand-release $ht _ @ralt (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+
+  scln (tap-hold-opposite-hand-release $ht (fork _ (multi _ sldr) (lsft rsft)) (multi rmet @sup) (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
+
+  ' (tap-hold-opposite-hand-release $ht _ (layer-while-held mouse_layer) (same-hand tap) (unknown-hand hold) (timeout hold) (tap-repress-timeout $tt))
 
   ;; montitors
   left_monitor (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-left 100 100))

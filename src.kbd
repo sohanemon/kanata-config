@@ -8,19 +8,21 @@
   lctl lmet lalt           spc            ralt rmet rctl
   )
 
-(defvar
-  left-hand-keys (
-    esc  1    2    3    4    5   
-    tab  q    w    e    r    t
-    caps a    s    d    f    g
-    lsft z    x    c    v    b
+(defhands
+  (left
+    esc 1 2 3 4 5
+    tab q w e r t
+    caps a s d f g
+    lsft z x c v b
     lctl lmet lalt
-    )
-  right-hand-keys (
-    6    7    8    9    0    -    =    bspc  grv
-    y    u    i    o    p    [    ]    \    del
-    h    j    k    l    scln '    ret  pgup
-    n    m    ,    .    /    rsft up   pgdn
-          ralt rmet rctl
-    )
   )
+  (right
+    6 7 8 9 0 - = bspc grv
+    y u i o p [ ] \ del
+    h j k l scln ' ret pgup
+    n m , . / rsft up pgdn
+    ralt rmet rctl
+  )
+)
+
+(defalias src use-defsrc)

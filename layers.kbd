@@ -1,4 +1,6 @@
 (deflayermap (default)
+  esc   hold
+
   grv   @grv
   tab   @tab
   caps  @caps
@@ -16,6 +18,11 @@
   ret   @ret
   lmet  @meta
   spc   @space
+
+  lctl  @draw-mod
+  rctl  @draw-mod
+  lsft  @scroll-mod
+  rsft  @scroll-mod
 )
 
 (deflayermap (homerow_fallback)
@@ -93,6 +100,8 @@
 (deflayermap (caps_layer))
 
 (deflayermap (tab_layer)
+  j  (unmod brdown)
+  k  (unmod brup)
   [ @left_monitor
   ] @right_monitor
 )
@@ -100,8 +109,10 @@
 (deflayermap (ret_layer))
 
 (deflayermap (grv_layer)
-  j  C-M-j
-  k  C-M-k
+  i  (unmod micmute)
+  o  (unmod mute)
+  j  (unmod vold)
+  k  (unmod volu)
 )
 
 (deflayermap (empty_layer)
