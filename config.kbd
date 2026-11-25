@@ -1,12 +1,13 @@
-(include options.kbd)
+(include lib/options.kbd)
+(include lib/utils.kbd)
 
-(include src.kbd)
-(include layers.kbd)
+(include layers/src.kbd)
+(include layers/main.kbd)
+(include layers/mouse.kbd) ;; Mouse should be before the mouse, because mouse contains layers.
 
 
-(include mouse.kbd) ;; Mouse should be before the mouse, because mouse contains layers.
-(include mods.kbd)
-(include chords.kbd)
+(include lib/mods.kbd)
+(include lib/chords.kbd)
 
 
 (include composer/index.kbd)

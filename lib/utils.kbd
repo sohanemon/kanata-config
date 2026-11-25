@@ -1,0 +1,19 @@
+;; NOTE: Use (t! mod-timeout <alias> <tap-action> <hold-action> <hold-time-ms>) for a custom threshold.
+(deftemplate mod-timeout (name tap hold hold-time)
+  (defalias $name
+    (tap-hold-opposite-hand-release $hold-time $tap $hold
+      (same-hand tap)
+      (unknown-hand hold)
+      (timeout hold)
+      (tap-repress-timeout $tt)))
+)
+
+;; NOTE: Use (t! mod <alias> <tap-action> <hold-action>) to use the standard $ht threshold.
+(deftemplate mod (name tap hold)
+  (t! mod-timeout $name $tap $hold $ht)
+)
+
+;; NOTE: Use (t! mod-long <alias> <tap-action> <hold-action>) to use the long $lht threshold.
+(deftemplate mod-long (name tap hold)
+  (t! mod-timeout $name $tap $hold $lht)
+)

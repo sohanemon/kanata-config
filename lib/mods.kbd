@@ -1,0 +1,63 @@
+(defalias
+  ;; vim layer-while-held
+  vim (layer-while-held vim_layer)
+  ;; navigation layer-while-held
+  ;; so, tab+x is ctrl+super+alt+x
+
+  ;; functions 
+  ;; so, grv+x is ctrl+super+x
+
+  ;; ctrl is so far to use
+  ;; so caps+x is ctrl+alt+x
+
+  ;; super + shift is now only return
+   ;; so, ret+x is super+shift+x
+
+
+  ;; single click action meta
+  meta (tap-hold-release 0 $ht M-A-tab _)
+
+  sup (layer-while-held super_layer)
+
+  app (tap-hold-release $tt $ht _ (multi lmet lsft lalt))
+  ;; so, app+x press is x and app(hold)+x is shift+super+alt+x
+  lalt (multi lalt (layer-while-held alt_layer))
+  ralt (multi ralt (layer-while-held alt_layer))
+  rctl (multi rctl (layer-while-held command_layer))
+  lctl (multi lctl (layer-while-held command_layer))
+  )
+
+(t! mod-long space spc @vim)
+(t! mod tab _ (multi lctl lmet lalt (layer-while-held tab_layer)))
+(t! mod grv _ (multi lctl lmet (layer-while-held grv_layer)))
+(t! mod caps esc (multi lctl lalt (layer-while-held caps_layer)))
+(t! mod ret _ (multi lmet lsft (layer-while-held ret_layer)))
+(t! mod a _ (multi lmet @sup))
+(t! mod s _ @lalt)
+(t! mod d _ lsft)
+(t! mod f _ @lctl)
+(t! mod g _ @app)
+(t! mod h _ @app)
+(t! mod j _ @rctl)
+(t! mod k _ rsft)
+(t! mod l _ @ralt)
+(t! mod scln (fork _ (multi _ sldr) (lsft rsft)) (multi rmet @sup))
+(t! mod ' _ (layer-while-held mouse_layer))
+
+(defaliasenvcond (KANATA_TOUCHPAD_MOD 1)
+  ;; NOTE: Enable mouse-button holds only when touchpad mode is requested.
+  draw-mod (tap-hold-release $tt $ht use-defsrc (multi use-defsrc mlft))
+  scroll-mod (tap-hold-release $tt $ht (tap-dance $ht caps) (multi use-defsrc mmid))
+  r
+)
+
+(defaliasenvcond (KANATA_TOUCHPAD_MOD 0)
+  draw-mod use-defsrc
+  scroll-mod (tap-dance 200 (use-defsrc caps))
+)
+
+(defalias
+  ;; montitors
+  left_monitor (macro (movemouse-left 100 30000) 100 (movemouse-left 100 100) 100 (movemouse-left 100 100))
+  right_monitor (macro (movemouse-right 100 30000) 100 (movemouse-right 100 100) 100 (movemouse-right 100 100))
+  )
